@@ -45,7 +45,7 @@ export default function Home() {
         <div className="flex flex-row">
           {connect.map((item, index) => {
             return (
-              <Link href={item.link} className="flex space-x-2 mx-2">
+              <Link href={item.link} key={index} className="flex space-x-2 mx-2">
                 <Image
                   src={item.icon}
                   width={30}
