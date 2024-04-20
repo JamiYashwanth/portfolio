@@ -1,6 +1,10 @@
-import { HoverEffect } from "@/components/ui/card-hover-effect";
+"use client"
+import React, { useState, useEffect } from 'react';
+import { HoverEffect } from '@/components/ui/card-hover-effect';
 
 export default function Achievements() {
+    const [animate, setAnimate] = useState(false);
+
     const achievements = [
         {
             title: "ICPC Kanpur Regional 2020",
@@ -54,26 +58,34 @@ export default function Achievements() {
             links: [{
                 src: '',
                 link: "https://auth.geeksforgeeks.org/user/jamiyashwanth18/practice/"
-
             }]
         }
-    ]
-    return <main className={`mx-3 mt-24 flex flex-col items-center justify-center `}>
-        <div className="mt-4 justify-start w-full h-full " >
-            <h1 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
-                Achievements <br />
-            </h1>
-            <div className="max-w-5xl mx-auto px-8">
-                <HoverEffect items={achievements} />
+    ];
+
+    useEffect(() => {
+        // Trigger animation after a short delay to allow the component to render first
+        const timeout = setTimeout(() => {
+            setAnimate(true);
+        }, 100);
+
+        // Clear timeout to prevent memory leaks
+        return () => clearTimeout(timeout);
+    }, []);
+
+    return (
+        <main className={`mx-3 mt-24 flex flex-col items-center justify-center `}>
+            <div className={`mt-4 w-full h-full ${animate ? 'opacity-100 transform translate-y-0 transition-all duration-500' : 'opacity-0'}`}>
+                <h1 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">Achievements</h1>
+                <div className="max-w-5xl mx-auto px-8">
+                    <HoverEffect items={achievements} />
+                </div>
             </div>
-        </div>
-        <div className="mt-4 justify-start w-full h-full " >
-            <h1 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
-                Coding profiles <br />
-            </h1>
-            <div className="max-w-5xl mx-auto px-8">
-                <HoverEffect items={profiles} />
+            <div className={`mt-4 w-full h-full ${animate ? 'opacity-100 transform translate-y-0 transition-all duration-500' : 'opacity-0'}`}>
+                <h1 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">Coding Profiles</h1>
+                <div className="max-w-5xl mx-auto px-8">
+                    <HoverEffect items={profiles} />
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+    );
 }
