@@ -1,8 +1,16 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar";
+import { Montserrat } from "next/font/google";
+import { SparklesCore } from "@/components/ui/sparkles";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({
+  weight: ["200", "400"],
+  display: "swap",
+  subsets: ["cyrillic-ext", "cyrillic", "latin-ext", "latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +23,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="h-full">
+      <body className={`tracking-wider ${montserrat.className} h-full`}>
+        <div className="relative flex flex-col h-full">
+          <Navbar />
+          <div className="relative flex-grow flex">
+            <div className="side-content"></div>
+            <div className="w-full h-full middle-content">
+              <main className="flex-col flex-grow h-full overflow-scroll">{children}</main>
+            </div>
+            <div className="side-content"></div>
+          </div>
+        </div>
+      </body>
     </html>
   );
 }
