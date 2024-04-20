@@ -54,7 +54,7 @@ export default function Projects() {
     }, []);
 
     return (
-        <main className={`mx-3 mt-24 flex h-full flex-col items-center justify-center`}>
+        <main className={`mx-3 mt-24 flex flex-col items-center justify-center `}>
             <div className={`mt-4 w-full h-full ${animate ? 'opacity-100 transform translate-y-0 transition-all duration-500' : 'opacity-0'}`}>
                 <h1 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">Projects</h1>
                 <div className="max-w-5xl mx-auto px-8">
