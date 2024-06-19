@@ -17,7 +17,7 @@ export default function Home() {
   const connect = [
     {
       icon: "/assets/github.png",
-      link: "https://github.com/JamiYashwanth",
+      link: "https://github.com/jami-yashwanth",
     },
     {
       icon: "/assets/linkedin.png",
